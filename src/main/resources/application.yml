@@ -1,0 +1,31 @@
+spring:
+    application:
+        name: aten-gateway
+        
+# 서버 포트 설정
+server:
+    port: 18882
+
+spring.profiles.active: default
+
+# 로그설정
+logging:
+    level:
+        root: warn
+        org.springframework: info
+        com.example.kafka: warn 
+    pattern:
+        console: '%d{yyyy-MM-dd HH:mm:ss} %-5p - %c %m%n'
+
+# kafka 설정
+spring.kafka:
+    consumer:
+        bootstrap-servers: localhost:9092
+        group-id: aten-group
+        auto-offset-reset: earliest
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    producer:
+        bootstrap-servers: localhost:9092
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
